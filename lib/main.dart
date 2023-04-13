@@ -1,27 +1,26 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:toonflix/screens/home_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        backgroundColor: const Color(0xFFE7626C),
-        textTheme: const TextTheme(
-          headline1: TextStyle(
-            color: Color(0xFF323B55),
-          ),
-        ),
-        cardColor: const Color(0xFFF4EDDB),
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.unknown,
+        },
       ),
-      home: const Scaffold(
-        backgroundColor: Color(0xFFF4EDDB),
-        body: HomeScreen(),
-      ),
+      home: HomeScreen(),
     );
   }
 }
